@@ -1,0 +1,35 @@
+Info:
+  - Author: Landon MacDonald
+  - Student ID: 101273035
+  - Video Link: TODO
+  - Video mp4 location: TODO
+
+Requirements:
+  - nodejs and npm needs to be installed on your device 
+    - Run 'sudo apt install nodejs npm' if on ubuntu
+    - If on windows or mac got the go to the distributals websites and download the latest versions
+
+Setup: (do all the following in the 'DatabasesA3Q2' directory)
+  1. In postgres create a 'studentInfo' database by running 'createdb studentInfo'
+  2. Make a '.env' file
+    1. Create a "DATABASE_URL" variable with the following format:
+      'DATABASE_URL=postgresql://<user>:<password>@<host>:<port>/<database>'
+    2. if you are using running postgres localy and using the defult db name use:
+      'DATABASE_URL=postgresql://<user>:<password>@localhost:5432/studentInfo'
+    3. In either case fill in the user and password with one that has permitions for the specified db
+  3. Run 'npm install'
+  4. Run 'npx drizzle-kit push' this will update the db with the table in 'schema.ts'
+
+Running the code: (do the following in the 'DatabasesA3Q2' directory)
+  1. Run 'npx tsx src/index.ts'
+  2. Follow the promts
+    - valid commands are 'setup', 'teardown', 'get', 'add', 'update', 'delete', and 'exit'
+  
+Command brakedown:
+  - 'setup' will try to add the initial data to the student table (will fail if they are already added do to email uniqueness constraint)
+  - 'teardown' will remove all users from the student table (will not reset the auto increment value)
+  - 'get' will print all students in the table to screen
+  - 'add' will prompt the user for user for required information before adding a new student with that info
+  - 'update' will prompt the user for required information before updating the specified user with a new email
+  - 'delete' will prompt the user for a studentID before deleting the student with that ID
+  - 'exit' will quit the program softly
